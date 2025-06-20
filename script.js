@@ -32,6 +32,7 @@ function translateWS(){
   document.getElementById("formCancel").innerText = t("formCancel");
   document.getElementById("formShareLink").innerText = t("formShareLink");
   document.getElementById("form_copyBtn").innerText = t("formShareCopy");
+  fail = estMasculin == null ? t("failInit") : t("failRoulette");
 }
 
 function init() {
