@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The reveal 🎰</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="form.css" />
+</head>
+<body onload="init()">
+  <!-- MAIN -->
+  <div class="container">
+    <h1 id="theReveal">The reveal 🎰</h1>
+    <div class="machine">
+      <div class="slots">
+        <div class="slot"><div class="reel" id="slot1"></div></div>
+        <div class="slot"><div class="reel" id="slot2"></div></div>
+        <div class="slot"><div class="reel" id="slot3"></div></div>
+      </div>
+      <div class="lever-container">
+        <div class="lever" id="lever">
+          <div class="ball"></div>
+        </div>
+      </div>
+    </div>
+    <p id="result"></p>
+  </div>
+  <canvas id="fireworks"></canvas>
+
+  <button id="form_openPopupBtn" style="display: none">Create a new roulette</button>
+
+  <div class="form_overlay" id="form_popupOverlay">
+    <div class="form_popup">
+      <h2 id="formNewRouletteTitle">New roulette</h2>
+      <form id="form_popupForm">
+        <label id="formTitle" for="form_title">Title :</label>
+        <input type="text" id="form_title" name="form_title" placeholder="The reveal 🎰">
+
+        <label id="formGender" for="form_gender">Gender :</label>
+        <select id="form_gender" name="form_gender" onchange="form_changeGender(this)">
+          <option id="formGenderBoy" value="1">Boy</option>
+          <option id="formGenderGirl" value="2">Girl</option>
+        </select>
+
+        <label id="formSymbols">Symbols :</label>
+        <div class="form_emojiContainer">
+          <input type="text" class="form_emojiInput" id="form_emoji1" maxlength="2" placeholder="♂️">
+          <input type="text" class="form_emojiInput" id="form_emoji2" maxlength="2" placeholder="♀️">
+        </div>
+
+        <label id="formOnSuccess" for="form_success">On success :</label>
+        <input type="text" id="form_success" name="form_success" placeholder="It's a boy !🎉">
+
+        <label id="formOnFail" for="form_fail">On fail :</label>
+        <input type="text" id="form_fail" name="form_fail" placeholder="Fail ! Try again...">
+
+        <div class="form_buttonRow">
+          <button id="formCreate" type="submit" class="form_buttonSubmit">Create</button>
+          <button id="formCancel" type="button" class="form_buttonClose" onclick="form_closePopup()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="form_overlay" id="form_resultPopupOverlay">
+    <div class="form_popup" style="position: relative;">
+      <button class="form_closeIcon" onclick="form_closeResult()">✕</button>
+      <h2 id="formShareLink">Share this link to your close ones ❤️</h2>
+      <div class="form_copySection">
+        <input type="text" id="form_formDataDisplay" class="form_copyInput" readonly>
+        <button class="form_copyBtn" id="form_copyBtn">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="langSwitcher">
+    <button id="toggleLangBtn">Langues ▼</button>
+    <ul id="langList">
+      <li data-lang="en">EN</li>
+      <li data-lang="fr">FR</li>
+      <li data-lang="es">ES</li>
+      <li data-lang="de">DE</li>
+      <li data-lang="it">It</li>
+      <li data-lang="pt">Pt</li>
+      <li data-lang="nl">Nl</li>
+    </ul>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        title: "The reveal 🎰",
+        congratsBoy: "It's a boy ! 🎉",
+        congratsGirl: "It's a girl ! 🎉",
+        failInit: "Can't find out! You have to create a new roulette first",
+        failRoulette: "Fail! Try again... 🎲",
+        newRoulette: "Create a new roulette",
+        formNewRouletteTitle: "New roulette",
+        formTitle: "Title",
+        formTitlePH: "The reveal 🎰",
+        formGender: "Gender",
+        formGenderBoy: "Boy",
+        formGenderGirl: "Girl",
+        formSymbols: "Symbols",
+        formOnSuccess: "On success",
+        formOnSuccessPH: "It's a boy !🎉",
+        formOnFail: "On fail",
+        formOnFailPH: "Fail! Try again... 🎲",
+        formCreate: "Create",
+        formCancel: "Cancel",
+        formShareLink: "Share this link to your close ones ❤️",
+        formShareCopy: "Copy",
+        formShareCopied: "Copied"
+      },
+      fr: {
+        title: "La révélation 🎰",
+        congratsBoy: "C'est un garçon ! 🎉",
+        congratsGirl: "C'est une fille ! 🎉",
+        failInit: "Aucune idée! Crée une nouvelle machine avant",
+        failRoulette: "Presque! Essaie à nouveau... 🎲",
+        newRoulette: "Créer une nouvelle machine",
+        formNewRouletteTitle: "Nouvelle machine",
+        formTitle: "Titre",
+        formTitlePH: "La révélation 🎰",
+        formGender: "Sexe",
+        formGenderBoy: "Garçon",
+        formGenderGirl: "Fille",
+        formSymbols: "Symboles",
+        formOnSuccess: "Réussite",
+        formOnSuccessPH: "C'est un garçon !🎉",
+        formOnFail: "Echec",
+        formOnFailPH: "Presque! Essaie à nouveau... 🎲",
+        formCreate: "Valider",
+        formCancel: "Annuler",
+        formShareLink: "Partage ce lien à tes proches ❤️",
+        formShareCopy: "Copier",
+        formShareCopied: "Copié"
+      },
+      es: {
+        title: "La revelación 🎰",
+        congratsBoy: "¡Es un niño! 🎉",
+        congratsGirl: "¡Es una niña! 🎉",
+        failInit: "¡No hay idea! Crea una nueva máquina antes",
+        failRoulette: "¡Casi! Intenta de nuevo... 🎲",
+        newRoulette: "Crear una nueva máquina",
+        formNewRouletteTitle: "Nueva máquina",
+        formTitle: "Título",
+        formTitlePH: "La revelación 🎰",
+        formGender: "Sexo",
+        formGenderBoy: "Niño",
+        formGenderGirl: "Niña",
+        formSymbols: "Símbolos",
+        formOnSuccess: "Éxito",
+        formOnSuccessPH: "¡Es un niño! 🎉",
+        formOnFail: "Fracaso",
+        formOnFailPH: "¡Casi! Intenta de nuevo... 🎲",
+        formCreate: "Validar",
+        formCancel: "Cancelar",
+        formShareLink: "Comparte este enlace con tus seres queridos ❤️",
+        formShareCopy: "Copiar",
+        formShareCopied: "Copiado"
+      },
+      de: {
+        title: "Die Enthüllung 🎰",
+        congratsBoy: "Es ist ein Junge! 🎉",
+        congratsGirl: "Es ist ein Mädchen! 🎉",
+        failInit: "Keine Ahnung! Erstelle zuerst eine neue Maschine",
+        failRoulette: "Fast! Versuch es nochmal... 🎲",
+        newRoulette: "Neue Maschine erstellen",
+        formNewRouletteTitle: "Neue Maschine",
+        formTitle: "Titel",
+        formTitlePH: "Die Enthüllung 🎰",
+        formGender: "Geschlecht",
+        formGenderBoy: "Junge",
+        formGenderGirl: "Mädchen",
+        formSymbols: "Symbole",
+        formOnSuccess: "Erfolg",
+        formOnSuccessPH: "Es ist ein Junge! 🎉",
+        formOnFail: "Fehlschlag",
+        formOnFailPH: "Fast! Versuch es nochmal... 🎲",
+        formCreate: "Bestätigen",
+        formCancel: "Abbrechen",
+        formShareLink: "Teile diesen Link mit deinen Liebsten ❤️",
+        formShareCopy: "Kopieren",
+        formShareCopied: "Kopiert"
+      },
+      it: {
+        title: "La rivelazione 🎰",
+        congratsBoy: "È un maschio! 🎉",
+        congratsGirl: "È una femmina! 🎉",
+        failInit: "Nessuna idea! Crea prima una nuova macchina",
+        failRoulette: "Quasi! Riprova... 🎲",
+        newRoulette: "Crea una nuova macchina",
+        formNewRouletteTitle: "Nuova macchina",
+        formTitle: "Titolo",
+        formTitlePH: "La rivelazione 🎰",
+        formGender: "Sesso",
+        formGenderBoy: "Maschio",
+        formGenderGirl: "Femmina",
+        formSymbols: "Simboli",
+        formOnSuccess: "Successo",
+        formOnSuccessPH: "È un maschio! 🎉",
+        formOnFail: "Fallimento",
+        formOnFailPH: "Quasi! Riprova... 🎲",
+        formCreate: "Conferma",
+        formCancel: "Annulla",
+        formShareLink: "Condividi questo link con i tuoi cari ❤️",
+        formShareCopy: "Copia",
+        formShareCopied: "Copiato"
+      },
+      pt: {
+        title: "A revelação 🎰",
+        congratsBoy: "É um menino! 🎉",
+        congratsGirl: "É uma menina! 🎉",
+        failInit: "Sem ideia! Crie uma nova máquina primeiro",
+        failRoulette: "Quase! Tente novamente... 🎲",
+        newRoulette: "Criar uma nova máquina",
+        formNewRouletteTitle: "Nova máquina",
+        formTitle: "Título",
+        formTitlePH: "A revelação 🎰",
+        formGender: "Sexo",
+        formGenderBoy: "Menino",
+        formGenderGirl: "Menina",
+        formSymbols: "Símbolos",
+        formOnSuccess: "Sucesso",
+        formOnSuccessPH: "É um menino! 🎉",
+        formOnFail: "Falha",
+        formOnFailPH: "Quase! Tente novamente... 🎲",
+        formCreate: "Validar",
+        formCancel: "Cancelar",
+        formShareLink: "Compartilhe este link com seus entes queridos ❤️",
+        formShareCopy: "Copiar",
+        formShareCopied: "Copiado"
+      },
+      nl: {
+        title: "De onthulling 🎰",
+        congratsBoy: "Het is een jongen! 🎉",
+        congratsGirl: "Het is een meisje! 🎉",
+        failInit: "Geen idee! Maak eerst een nieuwe machine",
+        failRoulette: "Bijna! Probeer het opnieuw... 🎲",
+        newRoulette: "Maak een nieuwe machine",
+        formNewRouletteTitle: "Nieuwe machine",
+        formTitle: "Titel",
+        formTitlePH: "De onthulling 🎰",
+        formGender: "Geslacht",
+        formGenderBoy: "Jongen",
+        formGenderGirl: "Meisje",
+        formSymbols: "Symbolen",
+        formOnSuccess: "Succes",
+        formOnSuccessPH: "Het is een jongen! 🎉",
+        formOnFail: "Mislukking",
+        formOnFailPH: "Bijna! Probeer het opnieuw... 🎲",
+        formCreate: "Bevestigen",
+        formCancel: "Annuleren",
+        formShareLink: "Deel deze link met je dierbaren ❤️",
+        formShareCopy: "Kopiëren",
+        formShareCopied: "Gekopieerd"
+      }
+    };
+  </script>
+  <script>
+    let currentLang = navigator.language.toLocaleLowerCase().split("-")[0];
+    if(!["en", "fr", "es", "de", "it", "pt", "nl", "ar"].includes(currentLang)) {
+      currentLang = "en";
+    }
+
+    document.getElementById("toggleLangBtn").innerText = currentLang + " ▼";
+
+    function t(key) {
+      return translations[currentLang]?.[key] || key;
+    }
+  </script>
+
+  <script src="script.js"></script>
+  <script src="form.js"></script>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleLangBtn');
+    const langList = document.getElementById('langList');
+
+    toggleBtn.addEventListener('click', () => {
+      langList.style.display = langList.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Exemple: afficher la langue choisie dans la console
+    langList.querySelectorAll('li').forEach(item => {
+      item.addEventListener('click', () => {
+        const selectedLang = item.getAttribute('data-lang');
+        langList.style.display = 'none';
+        // Ici tu peux ajouter la logique pour changer la langue de ton app
+        document.getElementById("toggleLangBtn").innerText = selectedLang + " ▼";
+        currentLang = selectedLang;
+        translateWS();
+      });
+    });
+
+    // Clic en dehors du menu pour fermer
+    document.addEventListener('click', (event) => {
+      if (!document.getElementById('langSwitcher').contains(event.target)) {
+        langList.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

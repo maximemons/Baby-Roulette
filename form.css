@@ -1,0 +1,183 @@
+    :root {
+      --form_primary: #4f46e5;
+      --form_danger: #dc2626;
+      --form_success: #16a34a;
+      --form_bg: #f9fafb;
+      --form_text: #111827;
+      --form_border: #e5e7eb;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: var(--form_bg);
+      color: var(--form_text);
+    }
+
+    #form_openPopupBtn {
+      margin: 40px auto;
+      display: block;
+      padding: 12px 24px;
+      font-size: 16px;
+      background: var(--form_primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    #form_openPopupBtn:hover {
+      background: #4338ca;
+    }
+
+    .form_overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .form_popup {
+      background: white;
+      width: 90%;
+      max-width: 400px;
+      padding: 25px 30px;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      animation: form_fadeIn 0.3s ease-out;
+    }
+
+    @keyframes form_fadeIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .form_popup h2 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      margin-top: 14px;
+      font-weight: 600;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--form_border);
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    .form_emojiContainer {
+      display: flex;
+      gap: 10px;
+    }
+
+    .form_emojiInput {
+      text-align: center;
+      font-size: 24px;
+      padding: 10px;
+    }
+
+    .form_buttonRow {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .form_buttonRow button {
+      flex: 1;
+      padding: 10px;
+      font-size: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .form_buttonSubmit {
+      background: var(--form_primary);
+      color: white;
+    }
+
+    .form_buttonSubmit:hover {
+      background: #4338ca;
+    }
+
+    .form_buttonClose {
+      background: var(--form_danger);
+      color: white;
+    }
+
+    .form_buttonClose:hover {
+      background: #b91c1c;
+    }
+
+    .form_copySection {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form_copyInput {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      font-family: monospace;
+      border: 1px solid var(--form_border);
+      background: #f1f5f9;
+    }
+
+    .form_copyBtn {
+      width: 100%;
+      background: var(--form_primary);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .form_copyBtn:hover:not(.form_copied) {
+      background: #4338ca;
+    }
+
+    .form_closeIcon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 20px;
+      background: transparent;
+      border: none;
+      color: #6b7280;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .form_closeIcon:hover {
+      color: var(--form_danger);
+    }
+
+    .form_copyBtn.form_copied {
+      background-color: var(--form_success) !important;
+      color: white !important;
+    }
+
+    @media (max-width: 500px) {
+      .form_popup {
+        padding: 20px;
+      }
+    }
