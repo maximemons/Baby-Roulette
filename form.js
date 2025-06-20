@@ -47,8 +47,7 @@
                      form_getValueOrPlaceHolder("form_emoji2") + ";" +  
                      form_getValueOrPlaceHolder("form_title") + ";" +
                      form_getValueOrPlaceHolder("form_success") + ";" + 
-                     form_getValueOrPlaceHolder("form_fail") + ";" +
-                     currentLang;
+                     form_getValueOrPlaceHolder("form_fail");
     form_closePopup();
 
     let finalValue = document.location.href.replace(/\?q?.*$/, "") + "?q=" + encodeBase64(toEncode);

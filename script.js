@@ -32,7 +32,6 @@ function translateWS(){
   document.getElementById("formCancel").innerText = t("formCancel");
   document.getElementById("formShareLink").innerText = t("formShareLink");
   document.getElementById("form_copyBtn").innerText = t("formShareCopy");
-  fail = t("failInit");
 }
 
 function init() {
@@ -44,6 +43,7 @@ function init() {
 
   if(param === null){
     document.getElementById("form_openPopupBtn").setAttribute("style", "");
+    document.getElementById("langSwitcher").setAttribute("style", "");
   }else{
     var config = "";
     try{
@@ -54,16 +54,16 @@ function init() {
 
     var c = config.split(";");
 
-    if(c.length == 7 && (c[0] == "1" || c[0] == "2") && c[1].length >= 1 && c[2].length >= 1) {
+    if(c.length == 6 && (c[0] == "1" || c[0] == "2") && c[1].length >= 1 && c[2].length >= 1) {
       estMasculin = (c[0] == "1");
       symbolGarcon = c[1];
       symbolFille = c[2];
       title = c[3];
       congrats = c[4];
       fail = c[5];
-      currentLang = c[6];
-      translateWS();
-      document.getElementById("toggleLangBtn").innerText = currentLang + " ▼";
+
+      document.title = title;
+      document.getElementById("theReveal").innerText = title;
     }else{
       document.location.search = "";
     }
