@@ -190,7 +190,7 @@ export function t(key) {
     return translations[currentLang][key] || key;
 }
 
-export initLangCombobox(langs, comboboxId) {
+export function initLangCombobox(langs, comboboxId) {
   let combo = document.getElementById(comboboxId);
 
   langs.forEach((lang) => {
@@ -202,12 +202,12 @@ export initLangCombobox(langs, comboboxId) {
   });
 }
 
-export selectLang(lang, comboboxId) {
+export function selectLang(lang, comboboxId) {
   document.getElementById(comboboxId).innerText = lang + " ▼"
   translateInitWebsite(lang);
 }
 
-export translateInitWebsite(lang) {
+export function translateInitWebsite(lang) {
   document.title = t("title");
   document.getElementById("theReveal").innerText = t("title");
   document.getElementById("form_openPopupBtn").innerText = t("formNewRouletteTitle");
