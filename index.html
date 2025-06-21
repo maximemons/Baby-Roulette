@@ -8,11 +8,13 @@
   <link rel="stylesheet" href="form.css" />
 </head>
 <body onload="init()">
-  <!-- counterAPI library, insert anywhere on the page. -->
-<script src="https://counterapi.com/c.js" async ></script>
-<!-- Add the counter instance somewhere to your template... -->
-<div class="counterapi" style="min-height:44px" ></div>
-  
+  <script>
+    const counterApiPath="https://counterapi.com/c.js?ns=" + document.location;
+    document.getElementById("counterApi").setAttribute("src", counterApiPath);
+  </script>
+<script id="counterApi" src="" async ></script>
+<div style="display: none" class="counterapi" style="min-height:44px" ></div>
+
   <!-- MAIN -->
   <div class="container">
     <h1 id="theReveal">The reveal 🎰</h1>
