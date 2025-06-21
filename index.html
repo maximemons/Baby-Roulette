@@ -84,6 +84,7 @@
     currentLang = allLangs.includes(navigator.language.toLocaleLowerCase().split("-")[0]) ? 
                     navigator.language.toLocaleLowerCase().split("-")[0] : 
                     currentLang;
+    initLangCombobox(allLangs, "langList");
   </script>
   <script>
     document.getElementById("toggleLangBtn").innerText = currentLang + " ▼";
