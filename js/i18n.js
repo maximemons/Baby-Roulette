@@ -199,6 +199,7 @@ export function initLangCombobox(langs, comboboxId) {
     let liElement = document.createElement("li");
     liElement.setAttribute("data-lang", lang);
     liElement.innerText = lang.toUpperCase();
+    liElement.setAttribute("onClick", "selectAndCloseLangList(this)");
 
     combo.appendChild(liElement);
   });
@@ -241,7 +242,7 @@ toggleBtn.addEventListener('click', () => {
   langList.style.display = langList.style.display === 'block' ? 'none' : 'block';
 });
 
-langList.querySelectorAll('li').forEach(item => {
+/*langList.querySelectorAll('li').forEach(item => {
   item.addEventListener('click', () => {
     const selectedLang = item.getAttribute('data-lang');
     langList.style.display = 'none';
@@ -250,8 +251,15 @@ langList.querySelectorAll('li').forEach(item => {
   });
 });
 
-/*document.addEventListener('click', (event) => {
+document.addEventListener('click', (event) => {
   if (!document.getElementById('langSwitcher').contains(event.target)) {
     langList.style.display = 'none';
   }
 });*/
+
+function selectAndCloseLangList(item) {
+  const selectedLang = item.getAttribute('data-lang');
+  currentLang = selectedLang;
+  selectLang(currentLang, "toggleLangBtn");
+  langList.style.display = 'none';
+}
