@@ -39,6 +39,9 @@ function translateWS(){
 }
 
 function init() {
+  const counterApiPath="https://counterapi.com/c.js?ns=" + document.location;
+  document.getElementById("counterApi").setAttribute("src", counterApiPath);
+
   var param = new URLSearchParams(document.location.search).get("q");
   document.getElementById('year').textContent = new Date().getFullYear()
 
