@@ -197,10 +197,10 @@ export function initLangCombobox(langs, comboboxId) {
 
   langs.forEach((lang) => {
     let liElement = document.createElement("li");
-    li.setAttribute("data-lang", lang);
-    li.innerText = lang.toUpperCase();
+    liElement.setAttribute("data-lang", lang);
+    liElement.innerText = lang.toUpperCase();
 
-    combo.appendChild(li);
+    combo.appendChild(liElement);
   });
 }
 
