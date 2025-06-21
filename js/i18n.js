@@ -250,8 +250,8 @@ langList.querySelectorAll('li').forEach(item => {
   });
 });
 
-document.addEventListener('click', (event) => {
+/*document.addEventListener('click', (event) => {
   if (!document.getElementById('langSwitcher').contains(event.target)) {
     langList.style.display = 'none';
   }
-});
+});*/
