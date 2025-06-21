@@ -39,7 +39,6 @@ function translateWS(){
 }
 
 function init() {
-  countUp();
   var param = new URLSearchParams(document.location.search).get("q");
   document.getElementById('year').textContent = new Date().getFullYear()
 
@@ -193,12 +192,4 @@ lever.addEventListener("click", async () => {
 
 function areSymbolsEquals(symbols) {
   return symbols[0] === symbols[1] && symbols[1] === symbols[2];
-}
-
-function countUp() {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', "https://api.counterapi.dev/v2/mainpage/mainpage/up", true);
-  xhr.setRequestHeader("Authorization", "Bearer ut_0tgw9BTH80MyefcPF5kWTSp80GV3j6jC3LqbvZ4I");
-
-  xhr.send();
 }
