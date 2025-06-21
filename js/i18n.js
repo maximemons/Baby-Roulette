@@ -184,7 +184,7 @@ const translations = {
 };
 
 export const allLangs = Object.keys(translations);
-export const currentLang = "en";
+export let currentLang = "en";
 
 export function t(key) {
     return translations[currentLang][key] || key;
