@@ -81,9 +81,6 @@
 
   <script type="module">
     import { t, allLangs, currentLang, initLangCombobox, selectLang } from './js/i18n.js';
-    currentLang = allLangs.includes(navigator.language.toLocaleLowerCase().split("-")[0]) ? 
-                    navigator.language.toLocaleLowerCase().split("-")[0] : 
-                    currentLang;
     initLangCombobox(allLangs, "langList");
   </script>
   <script>

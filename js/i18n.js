@@ -184,7 +184,9 @@ const translations = {
 };
 
 export const allLangs = Object.keys(translations);
-export let currentLang = "en";
+export let currentLang = allLangs.includes(navigator.language.toLowerCase().split("-")[0]) ? 
+                    navigator.language.toLocaleLowerCase().split("-")[0] : 
+                    "en";
 
 export function t(key) {
     return translations[currentLang][key] || key;
