@@ -202,6 +202,8 @@ export function initLangCombobox(langs, comboboxId) {
 
     combo.appendChild(liElement);
   });
+
+  selectLang(currentLang, "toggleLangBtn");
 }
 
 export function selectLang(lang, comboboxId) {
