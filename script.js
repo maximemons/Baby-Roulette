@@ -33,10 +33,14 @@ function translateWS(){
   document.getElementById("formShareLink").innerText = t("formShareLink");
   document.getElementById("form_copyBtn").innerText = t("formShareCopy");
   fail = estMasculin == null ? t("failInit") : t("failRoulette");
+
+  document.getElementById("github").innerText = t("github");
+  document.getElementById("paypal").innerText = t("paypal");
 }
 
 function init() {
   var param = new URLSearchParams(document.location.search).get("q");
+  document.getElementById('year').textContent = new Date().getFullYear()
 
   if(currentLang != "en"){
     translateWS();

@@ -110,7 +110,9 @@
         formCancel: "Cancel",
         formShareLink: "Share this link to your close ones ❤️",
         formShareCopy: "Copy",
-        formShareCopied: "Copied"
+        formShareCopied: "Copied",
+        github: "View on GitHub",
+        paypal: "Support via PayPal"
       },
       fr: {
         title: "La révélation 🎰",
@@ -134,7 +136,9 @@
         formCancel: "Annuler",
         formShareLink: "Partage ce lien à tes proches ❤️",
         formShareCopy: "Copier",
-        formShareCopied: "Copié"
+        formShareCopied: "Copié",
+        github: "Voir sur GitHub",
+        paypal: "Soutenir via PayPal"
       },
       es: {
         title: "La revelación 🎰",
@@ -158,7 +162,9 @@
         formCancel: "Cancelar",
         formShareLink: "Comparte este enlace con tus seres queridos ❤️",
         formShareCopy: "Copiar",
-        formShareCopied: "Copiado"
+        formShareCopied: "Copiado",
+        github: "Ver en GitHub",
+        paypal: "Apoyar vía PayPal"
       },
       de: {
         title: "Die Enthüllung 🎰",
@@ -182,7 +188,9 @@
         formCancel: "Abbrechen",
         formShareLink: "Teile diesen Link mit deinen Liebsten ❤️",
         formShareCopy: "Kopieren",
-        formShareCopied: "Kopiert"
+        formShareCopied: "Kopiert",
+        github: "Auf GitHub ansehen",
+        paypal: "Über PayPal unterstützen"
       },
       it: {
         title: "La rivelazione 🎰",
@@ -206,7 +214,9 @@
         formCancel: "Annulla",
         formShareLink: "Condividi questo link con i tuoi cari ❤️",
         formShareCopy: "Copia",
-        formShareCopied: "Copiato"
+        formShareCopied: "Copiato",
+        github: "Visualizza su GitHub",
+        paypal: "Supporta tramite PayPal"
       },
       pt: {
         title: "A revelação 🎰",
@@ -230,7 +240,9 @@
         formCancel: "Cancelar",
         formShareLink: "Compartilhe este link com seus entes queridos ❤️",
         formShareCopy: "Copiar",
-        formShareCopied: "Copiado"
+        formShareCopied: "Copiado",
+        github: "Ver no GitHub",
+        paypal: "Apoiar via PayPal"
       },
       nl: {
         title: "De onthulling 🎰",
@@ -254,13 +266,15 @@
         formCancel: "Annuleren",
         formShareLink: "Deel deze link met je dierbaren ❤️",
         formShareCopy: "Kopiëren",
-        formShareCopied: "Gekopieerd"
+        formShareCopied: "Gekopieerd",
+        github: "Bekijk op GitHub",
+        paypal: "Steunen via PayPal"
       }
     };
   </script>
   <script>
     let currentLang = navigator.language.toLocaleLowerCase().split("-")[0];
-    if(!["en", "fr", "es", "de", "it", "pt", "nl", "ar"].includes(currentLang)) {
+    if(!["en", "fr", "es", "de", "it", "pt", "nl"].includes(currentLang)) {
       currentLang = "en";
     }
 
@@ -301,5 +315,25 @@
       }
     });
   </script>
+
+  <footer class="site-footer">
+    <center>
+      <table>
+        <tr>
+          <td colspan="2">
+            <span>&copy;<span id="year"></span> Maxime Mons. Tous droits réservés.</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <center><a href="https://github.com/maximemons/Baby-Roulette" target="_blank" class="footer-link" id="github">Voir sur GitHub</a></center>
+          </td>
+          <td>
+            <center><a href="https://www.paypal.com/donate/?hosted_button_id=MBLHARVDYVX2S" target="_blank" class="footer-link" id=paypal>Soutenir via PayPal</a></center>
+          </td>
+        </tr>
+      </table>
+    </center>
+</footer>
 </body>
 </html>

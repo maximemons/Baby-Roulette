@@ -189,3 +189,22 @@ h1 {
     #langList li:hover {
       background-color: #f0f0f0;
     }
+
+  .site-footer {
+    padding: 1rem;
+    font-size: 0.9rem;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+    color: #666;
+    position: absolute;
+    width: 100%;
+    height: 56px;
+    bottom: 0px;
+}
+
+  html, body {
+    height: 100%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
