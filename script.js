@@ -14,28 +14,7 @@ const resultText = document.getElementById("result");
 let compteur = 0;
 
 function translateWS(){
-  document.title = t("title");
-  document.getElementById("theReveal").innerText = t("title");
-  document.getElementById("form_openPopupBtn").innerText = t("formNewRouletteTitle");
-  document.getElementById("formNewRouletteTitle").innerText = t("formNewRouletteTitle");
-  document.getElementById("formTitle").innerText = t("formTitle");
-  document.getElementById("form_title").setAttribute("placeholder", t("formTitlePH"));
-  document.getElementById("formGender").innerText = t("formGender");
-  document.getElementById("formGenderBoy").innerText = t("formGenderBoy");
-  document.getElementById("formGenderGirl").innerText = t("formGenderGirl");
-  document.getElementById("formSymbols").innerText = t("formSymbols");
-  document.getElementById("formOnSuccess").innerText = t("formOnSuccess");
-  document.getElementById("form_success").setAttribute("placeholder", t("formOnSuccessPH"));
-  document.getElementById("formOnFail").innerText = t("formOnFail");
-  document.getElementById("form_fail").setAttribute("placeholder", t("formOnFailPH"));
-  document.getElementById("formCreate").innerText = t("formCreate");
-  document.getElementById("formCancel").innerText = t("formCancel");
-  document.getElementById("formShareLink").innerText = t("formShareLink");
-  document.getElementById("form_copyBtn").innerText = t("formShareCopy");
   fail = estMasculin == null ? t("failInit") : t("failRoulette");
-
-  document.getElementById("github").innerText = t("github");
-  document.getElementById("paypal").innerText = t("paypal");
 }
 
 function init() {

@@ -189,3 +189,65 @@ export let currentLang = "en";
 export function t(key) {
     return translations[currentLang][key] || key;
 }
+
+export initLangCombobox(langs, comboboxId) {
+  let combo = document.getElementById(comboboxId);
+
+  langs.forEach((lang) => {
+    let liElement = document.createElement("li");
+    li.setAttribute("data-lang", lang);
+    li.innerText = lang.toUpperCase();
+
+    combo.appendChild(li);
+  });
+}
+
+export selectLang(lang, comboboxId) {
+  document.getElementById(comboboxId).innerText = lang + " ▼"
+  translateInitWebsite(lang);
+}
+
+export translateInitWebsite(lang) {
+  document.title = t("title");
+  document.getElementById("theReveal").innerText = t("title");
+  document.getElementById("form_openPopupBtn").innerText = t("formNewRouletteTitle");
+  document.getElementById("formNewRouletteTitle").innerText = t("formNewRouletteTitle");
+  document.getElementById("formTitle").innerText = t("formTitle");
+  document.getElementById("form_title").setAttribute("placeholder", t("formTitlePH"));
+  document.getElementById("formGender").innerText = t("formGender");
+  document.getElementById("formGenderBoy").innerText = t("formGenderBoy");
+  document.getElementById("formGenderGirl").innerText = t("formGenderGirl");
+  document.getElementById("formSymbols").innerText = t("formSymbols");
+  document.getElementById("formOnSuccess").innerText = t("formOnSuccess");
+  document.getElementById("form_success").setAttribute("placeholder", t("formOnSuccessPH"));
+  document.getElementById("formOnFail").innerText = t("formOnFail");
+  document.getElementById("form_fail").setAttribute("placeholder", t("formOnFailPH"));
+  document.getElementById("formCreate").innerText = t("formCreate");
+  document.getElementById("formCancel").innerText = t("formCancel");
+  document.getElementById("formShareLink").innerText = t("formShareLink");
+  document.getElementById("form_copyBtn").innerText = t("formShareCopy");
+  document.getElementById("github").innerText = t("github");
+  document.getElementById("paypal").innerText = t("paypal");
+}
+
+const toggleBtn = document.getElementById('toggleLangBtn');
+const langList = document.getElementById('langList');
+
+toggleBtn.addEventListener('click', () => {
+  langList.style.display = langList.style.display === 'block' ? 'none' : 'block';
+});
+
+langList.querySelectorAll('li').forEach(item => {
+  item.addEventListener('click', () => {
+    const selectedLang = item.getAttribute('data-lang');
+    langList.style.display = 'none';
+    currentLang = selectedLang;
+    selectLang(currentLang, "toggleLangBtn");
+  });
+});
+
+document.addEventListener('click', (event) => {
+  if (!document.getElementById('langSwitcher').contains(event.target)) {
+    langList.style.display = 'none';
+  }
+});

@@ -76,26 +76,16 @@
   <div style="display: none" id="langSwitcher">
     <button id="toggleLangBtn">Langues ▼</button>
     <ul id="langList">
-      <li data-lang="en">EN</li>
-      <li data-lang="fr">FR</li>
-      <li data-lang="es">ES</li>
-      <li data-lang="de">DE</li>
-      <li data-lang="it">It</li>
-      <li data-lang="pt">Pt</li>
-      <li data-lang="nl">Nl</li>
     </ul>
   </div>
 
   <script type="module">
-    import { t, allLangs, currentLang } from './js/i18n.js';
-    console.log(allLangs);
+    import { t, allLangs, currentLang, initLangCombobox, selectLang } from './js/i18n.js';
+    currentLang = allLangs.includes(navigator.language.toLocaleLowerCase().split("-")[0]) ? 
+                    navigator.language.toLocaleLowerCase().split("-")[0] : 
+                    currentLang;
   </script>
   <script>
-    let currentLang = navigator.language.toLocaleLowerCase().split("-")[0];
-    if(!["en", "fr", "es", "de", "it", "pt", "nl"].includes(currentLang)) {
-      currentLang = "en";
-    }
-
     document.getElementById("toggleLangBtn").innerText = currentLang + " ▼";
 
     function t(key) {
