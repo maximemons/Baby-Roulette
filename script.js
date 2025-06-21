@@ -39,9 +39,6 @@ function translateWS(){
 }
 
 function init() {
-  const counterApiPath="https://counterapi.com/c.js?ns=" + document.location;
-  document.getElementById("counterApi").setAttribute("src", counterApiPath);
-
   var param = new URLSearchParams(document.location.search).get("q");
   document.getElementById('year').textContent = new Date().getFullYear()
 
@@ -195,4 +192,17 @@ lever.addEventListener("click", async () => {
 
 function areSymbolsEquals(symbols) {
   return symbols[0] === symbols[1] && symbols[1] === symbols[2];
+}
+
+function appendApiCounter(){
+  let script = document.createElement('script');
+  script.src = '"https://counterapi.com/c.js?ns=" + document.location';
+  script.async = true;
+
+  let div = document.createElement('div');
+  div.setAttribute("style", /*"display: none"*/"min-height:44px");
+  div.setAttribute("class", "counterapi");
+
+  document.getElementsByTagName("body")[0].appendChild(script);
+  document.getElementsByTagName("body")[0].appendChild(div);
 }
