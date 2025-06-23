@@ -24,6 +24,7 @@ const translations = {
       formShareCopied: "Copied",
       github: "View on GitHub",
       paypal: "Support via PayPal"
+
   },
   fr: {
       title: "La révélation 🎰",
@@ -199,7 +200,6 @@ export function initLangCombobox() {
     let liElement = document.createElement("li");
     liElement.setAttribute("data-lang", lang.toLowerCase());
     liElement.innerText = lang.toLowerCase();
-    liElement.setAttribute("onClick", "selectAndCloseLangList(this)");
 
     combo.appendChild(liElement);
   });
@@ -235,11 +235,4 @@ export function translateInitWebsite(lang) {
   document.getElementById("form_copyBtn").innerText = t("formShareCopy");
   document.getElementById("github").innerText = t("github");
   document.getElementById("paypal").innerText = t("paypal");
-}
-
-export function selectAndCloseLangList(item) {
-  const selectedLang = item.getAttribute('data-lang');
-  currentLang = selectedLang;
-  selectLang(currentLang, "toggleLangBtn");
-  langList.style.display = 'none';
 }
