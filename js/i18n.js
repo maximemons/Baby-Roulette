@@ -235,28 +235,6 @@ export function translateInitWebsite(lang) {
   document.getElementById("paypal").innerText = t("paypal");
 }
 
-const toggleBtn = document.getElementById('toggleLangBtn');
-const langList = document.getElementById('langList');
-
-toggleBtn.addEventListener('click', () => {
-  langList.style.display = langList.style.display === 'block' ? 'none' : 'block';
-});
-
-/*langList.querySelectorAll('li').forEach(item => {
-  item.addEventListener('click', () => {
-    const selectedLang = item.getAttribute('data-lang');
-    langList.style.display = 'none';
-    currentLang = selectedLang;
-    selectLang(currentLang, "toggleLangBtn");
-  });
-});
-
-document.addEventListener('click', (event) => {
-  if (!document.getElementById('langSwitcher').contains(event.target)) {
-    langList.style.display = 'none';
-  }
-});*/
-
 function selectAndCloseLangList(item) {
   const selectedLang = item.getAttribute('data-lang');
   currentLang = selectedLang;
