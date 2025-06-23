@@ -192,10 +192,10 @@ export function t(key) {
     return translations[currentLang][key] || key;
 }
 
-export function initLangCombobox(langs, comboboxId) {
-  let combo = document.getElementById(comboboxId);
+export function initLangCombobox() {
+  let combo = document.getElementById("langList");
 
-  langs.forEach((lang) => {
+  langs.forEach((allLangs) => {
     let liElement = document.createElement("li");
     liElement.setAttribute("data-lang", lang);
     liElement.innerText = lang.toUpperCase();
