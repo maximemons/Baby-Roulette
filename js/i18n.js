@@ -197,8 +197,8 @@ export function initLangCombobox() {
 
   allLangs.forEach((lang) => {
     let liElement = document.createElement("li");
-    liElement.setAttribute("data-lang", lang);
-    liElement.innerText = lang.toUpperCase();
+    liElement.setAttribute("data-lang", lang.toLowerCase());
+    liElement.innerText = lang.toLowerCase();
     liElement.setAttribute("onClick", "selectAndCloseLangList(this)");
 
     combo.appendChild(liElement);
@@ -237,7 +237,7 @@ export function translateInitWebsite(lang) {
   document.getElementById("paypal").innerText = t("paypal");
 }
 
-function selectAndCloseLangList(item) {
+export function selectAndCloseLangList(item) {
   const selectedLang = item.getAttribute('data-lang');
   currentLang = selectedLang;
   selectLang(currentLang, "toggleLangBtn");
