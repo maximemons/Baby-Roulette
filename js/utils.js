@@ -1,0 +1,44 @@
+import { t } from './i18n.js';
+
+export function isHomePage() {
+	var query = new URLSearchParams(document.location.search).get("q");
+	var params = null;
+	if(query != null) {
+		params = queryToData(query);
+	}
+	
+	if(params === null) {
+		return true;
+	}else{
+		if(params == null) {
+			return null;
+		}
+		return false;
+	}
+}
+
+export function decodeDatas(base64) {
+  var base64Decoded = atob(base64);
+  return decodeURIComponent(base64Decoded);
+}
+
+export function encodeDatas(str) {
+  var uriEncoded = encodeURIComponent(str);
+  return btoa(uriEncoded);
+}
+
+export function queryToData(params) {
+	var decodedParams = decodeDatas(params);
+
+	if(decodedParams.length == 6 && (decodedParams[0] == "1" || decodedParams[0] == "2") && decodedParams[1].length >= 1 && decodedParams[2].length >= 1) {
+		return {
+			gender: decodedParams[0],
+			symbolBoy: decodedParams[1],
+			symbolGirl: decodedParams[2],
+			labelWin: decodedParams[3],
+			labelFail: decodedParams[4]
+		};
+	}
+
+	return null; 
+}

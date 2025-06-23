@@ -73,6 +73,16 @@ h1 {
   transform: rotate(-45deg);
 }
 
+.attention {
+  animation: wiggle 3s infinite;
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
 .lever .ball {
   width: 30px;
   height: 30px;

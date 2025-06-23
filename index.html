@@ -18,7 +18,7 @@
         <div class="slot"><div class="reel" id="slot3"></div></div>
       </div>
       <div class="lever-container">
-        <div class="lever" id="lever">
+        <div class="lever attention" id="lever">
           <div class="ball"></div>
         </div>
       </div>
@@ -80,15 +80,6 @@
   </div>
 
   <script type="module">
-    import { t, allLangs, currentLang, initLangCombobox, selectLang } from './js/i18n.js';
-    initLangCombobox(allLangs, "langList");
-  </script>
-  <script>
-    document.getElementById("toggleLangBtn").innerText = currentLang + " ▼";
-
-    function t(key) {
-      return translations[currentLang]?.[key] || key;
-    }
   </script>
 
   <script src="script.js"></script>
