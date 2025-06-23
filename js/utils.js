@@ -18,13 +18,21 @@ export function isHomePage() {
 }
 
 export function decodeDatas(base64) {
-  var base64Decoded = atob(base64);
-  return decodeURIComponent(base64Decoded);
+	try {
+		var base64Decoded = atob(base64);
+	  return decodeURIComponent(base64Decoded);
+	} catch(e) {
+		return "";
+	}
 }
 
 export function encodeDatas(str) {
-  var uriEncoded = encodeURIComponent(str);
-  return btoa(uriEncoded);
+	try{
+		var uriEncoded = encodeURIComponent(str);
+	  return btoa(uriEncoded);
+	} catch(e) {
+		return "";
+	}
 }
 
 export function queryToData(params) {
