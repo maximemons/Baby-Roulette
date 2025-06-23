@@ -1,4 +1,4 @@
-import { currentLang, t, initLangCombobox } from './i18n.js';
+import { currentLang, t, initLangCombobox, translateInitWebsite } from './i18n.js';
 import { isHomePage, queryToData } from './utils.js';
 
 let params = null;
