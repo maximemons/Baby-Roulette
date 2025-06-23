@@ -195,7 +195,7 @@ export function t(key) {
 export function initLangCombobox() {
   let combo = document.getElementById("langList");
 
-  langs.forEach((allLangs) => {
+  allLangs.forEach((lang) => {
     let liElement = document.createElement("li");
     liElement.setAttribute("data-lang", lang);
     liElement.innerText = lang.toUpperCase();
