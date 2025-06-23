@@ -82,6 +82,8 @@
 
   <script type="module">
     import { init } from './js/script.js';
+    import { currentLang } from './js/i18n.js';
+
     init();
   </script>
 
@@ -101,6 +103,10 @@
       item.addEventListener('click', () => {
         const selectedLang = item.getAttribute('data-lang');
         langList.style.display = 'none';
+
+        console.log("SELECTED LANG", selectedLang);
+
+        currentLang = selectedLang;
         // Ici tu peux ajouter la logique pour changer la langue de ton app
         document.getElementById("toggleLangBtn").innerText = selectedLang + " ▼";
         currentLang = selectedLang;
@@ -116,7 +122,7 @@
     });
   </script>
   <script src="https://counterapi.com/c.js?ns=baby-roulette.com" async ></script>
-  <div class="counterapi" style="min-height:44px;" style="display:none"></div>
+  <div class="counterapi" style="min-height:44px;display:none;"></div>
   <footer>
     <center>
       <table>
