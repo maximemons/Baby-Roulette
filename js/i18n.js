@@ -204,7 +204,7 @@ export function initLangCombobox() {
     combo.appendChild(liElement);
   });
 
-  document.getElementById(comboboxId).setAttribute("style", "");
+  document.getElementById("langSwitcher").setAttribute("style", "");
   selectLang(currentLang, "toggleLangBtn");
 
 }
