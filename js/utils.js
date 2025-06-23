@@ -36,7 +36,7 @@ export function encodeDatas(str) {
 }
 
 export function queryToData(params) {
-	var decodedParams = decodeDatas(params);
+	var decodedParams = decodeDatas(params).split(";");
 
 	if(decodedParams.length == 6 && (decodedParams[0] == "1" || decodedParams[0] == "2") && decodedParams[1].length >= 1 && decodedParams[2].length >= 1) {
 		return {
