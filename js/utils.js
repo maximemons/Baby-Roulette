@@ -7,7 +7,7 @@ export function isHomePage() {
 		params = queryToData(query);
 	}
 	
-	if(params === null) {
+	if(query == null) {
 		return true;
 	}else{
 		if(params == null) {
