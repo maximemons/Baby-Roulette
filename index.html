@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="form.css" />
 </head>
-<body onload="init()">
+
+<body>
   <!-- MAIN -->
   <div class="container">
     <h1 id="theReveal">The reveal 🎰</h1>
@@ -80,10 +81,12 @@
   </div>
 
   <script type="module">
+    import { init } from './js/utils.js';
+    init();
   </script>
 
-  <script src="script.js"></script>
-  <script src="form.js"></script>
+  <!--script src="script.js"></script>
+  <script src="form.js"></script-->
 
   <script>
     const toggleBtn = document.getElementById('toggleLangBtn');
